@@ -1,0 +1,442 @@
+/* ═══════════════════════════════════════════════════════════════════
+   CONTACT SECTION — "The Clean Terminal" Cyberpunk Portfolio
+   ═══════════════════════════════════════════════════════════════════ */
+
+.contact {
+  position: relative;
+  padding-block: 96px;
+  z-index: 1;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding-inline: 24px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION HEADER
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sectionHeader {
+  margin-bottom: 64px;
+}
+
+.sectionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-default);
+  border-radius: 9999px;
+  background: var(--bg-neutral-secondary-medium);
+  font-family: "Audiowide", monospace;
+  font-size: 12px;
+  margin-bottom: 24px;
+}
+
+.tagPrompt {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.tagCmd {
+  color: var(--bg-success);
+}
+
+.tagArg {
+  color: var(--text-heading);
+}
+
+.sectionTitle {
+  margin-bottom: 16px;
+}
+
+.titleAccent {
+  color: var(--accent-cyan);
+}
+
+.sectionSubtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-body);
+  max-width: 60ch;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN GRID
+   ═══════════════════════════════════════════════════════════════════ */
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 992px) {
+  .mainGrid {
+    grid-template-columns: 1fr 1.5fr;
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   INFO CARDS
+   ═══════════════════════════════════════════════════════════════════ */
+
+.infoArea {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--bg-neutral-primary-soft);
+  border: 1px solid var(--border-default);
+  border-radius: 2px;
+  text-decoration: none;
+  box-shadow: var(--shadow-xs);
+  transition: all 200ms ease-out;
+  clip-path: polygon(
+    10px 0%, 100% 0%, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 0% 100%, 0% 10px
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.infoCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--border-default-medium);
+  transition: all 200ms ease-out;
+}
+
+.infoCard:hover {
+  background: var(--bg-neutral-secondary-medium);
+  border-color: var(--border-brand-subtle);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.infoCard:hover::before {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.infoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-neutral-primary-medium);
+  border: 1px solid var(--border-default-strong);
+  border-radius: 2px;
+  color: var(--text-heading);
+  transition: all 200ms ease-out;
+  flex-shrink: 0;
+}
+
+.infoCard:hover .infoIcon {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: var(--bg-brand-softer);
+  box-shadow: inset 0 0 10px rgba(84, 234, 253, 0.2);
+}
+
+.infoContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  font-family: "Audiowide", monospace;
+  font-size: 10px;
+  color: var(--text-body-subtle);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.infoValue {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-heading);
+  transition: color 200ms ease-out;
+}
+
+.infoCard:hover .infoValue {
+  color: var(--accent-cyan);
+}
+
+.infoArrow {
+  color: var(--text-body-subtle);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 200ms ease-out;
+}
+
+.infoCard:hover .infoArrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent-cyan);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TERMINAL FORM
+   ═══════════════════════════════════════════════════════════════════ */
+
+.formContainer {
+  background: rgba(4, 4, 10, 0.7);
+  border: 1px solid var(--border-default);
+  border-radius: 2px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  clip-path: polygon(
+    16px 0%, 100% 0%, 100% calc(100% - 16px),
+    calc(100% - 16px) 100%, 0% 100%, 0% 16px
+  );
+}
+
+/* ── Window Header ── */
+.formHeader {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(13, 13, 20, 0.9);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.windowControls {
+  display: flex;
+  gap: 6px;
+}
+
+.windowControls span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.controlClose { background: #FF5F56; }
+.controlMin { background: #FFBD2E; }
+.controlMax { background: #27C93F; }
+
+.windowTitle {
+  flex: 1;
+  text-align: center;
+  font-family: "Audiowide", monospace;
+  font-size: 11px;
+  color: var(--text-body-subtle);
+  letter-spacing: 1px;
+}
+
+/* ── Form Body ── */
+.formBody {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputLabel {
+  font-family: "Audiowide", monospace;
+  font-size: 12px;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-default-strong);
+  padding: 10px 0;
+  font-family: "Inter", sans-serif; /* fallback to sans-serif for readability if Inter isn't loaded */
+  font-size: 15px;
+  color: var(--text-heading);
+  transition: all 200ms ease-out;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  background: rgba(84, 234, 253, 0.03);
+  padding-left: 12px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-body-subtle);
+  font-family: "Audiowide", monospace;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* Focus Line Animation */
+.inputFocusLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent-cyan);
+  transition: width 300ms ease-out;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.input:focus ~ .inputFocusLine,
+.textarea:focus ~ .inputFocusLine {
+  width: 100%;
+}
+
+.input:disabled,
+.textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Form Footer / Submit ── */
+.formFooter {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-family: "Audiowide", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-black);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: var(--bg-brand);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  clip-path: polygon(
+    8px 0%, 100% 0%, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 0% 100%, 0% 8px
+  );
+  box-shadow:
+    var(--shadow-xs),
+    inset rgba(84, 234, 253, 0.12) 0 1px 0px 0px,
+    rgba(84, 234, 253, 0.08) 0 0 14px -2px;
+  transition: all 150ms ease-out;
+  cursor: pointer;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--bg-brand-strong);
+  text-shadow: none;
+  box-shadow:
+    var(--shadow-md),
+    inset rgba(84, 234, 253, 0.25) 0 1px 0px 0px,
+    rgba(84, 234, 253, 0.2) 0 0 30px -2px;
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  background: var(--bg-neutral-secondary-strong);
+  color: var(--text-body-subtle);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btnIcon {
+  transition: transform 200ms ease;
+}
+
+.submitBtn:hover:not(:disabled) .btnIcon {
+  transform: translateX(4px);
+}
+
+/* ── Success Message ── */
+.successMessage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(0, 230, 118, 0.1);
+  border: 1px solid var(--border-success-subtle);
+  border-radius: 2px;
+  color: var(--text-success);
+  font-family: "Audiowide", monospace;
+  font-size: 12px;
+  width: 100%;
+  animation: fadeInUp 400ms ease-out;
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg-success);
+  color: var(--text-black);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .contact {
+    padding-block: 64px;
+  }
+  
+  .sectionHeader {
+    margin-bottom: 40px;
+  }
+  
+  .formBody {
+    padding: 24px 16px;
+  }
+}

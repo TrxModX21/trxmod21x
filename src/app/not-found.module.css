@@ -1,0 +1,359 @@
+/* ═══════════════════════════════════════════════════════════════════
+   404 NOT FOUND — "The Clean Terminal" Cyberpunk Portfolio
+   ═══════════════════════════════════════════════════════════════════ */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Atmospheric Background ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb1 {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 60, 0.06) 0%,
+    rgba(255, 0, 60, 0.02) 35%,
+    transparent 65%
+  );
+  filter: blur(100px);
+}
+
+.orb2 {
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(84, 234, 253, 0.04) 0%,
+    transparent 60%
+  );
+  filter: blur(80px);
+}
+
+.gridOverlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(84, 234, 253, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 234, 253, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+}
+
+/* ── Scanline ── */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 10%,
+    rgba(255, 0, 60, 0.15) 40%,
+    rgba(84, 234, 253, 0.1) 60%,
+    transparent 90%
+  );
+  z-index: 5;
+  animation: scanPass 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scanPass {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ── Main Content ── */
+.main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 32px 24px;
+  max-width: 640px;
+  gap: 20px;
+}
+
+/* ── Terminal Tag ── */
+.terminalTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-default);
+  border-radius: 9999px;
+  background: var(--bg-neutral-secondary-medium);
+  font-family: "Audiowide", monospace;
+  font-size: 12px;
+  animation: fadeInUp 600ms ease-out 100ms both;
+}
+
+.tagPrompt {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.tagCmd {
+  color: var(--bg-success);
+}
+
+.tagArg {
+  color: var(--text-heading);
+}
+
+.tagError {
+  color: var(--bg-danger);
+  font-weight: 700;
+}
+
+/* ── 404 Code — Glitch Effect ── */
+.code {
+  position: relative;
+  font-family: "Audiowide", sans-serif;
+  font-size: 140px;
+  font-weight: 700;
+  color: var(--text-heading);
+  line-height: 1;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin: 0;
+  animation: fadeInUp 600ms ease-out 200ms both;
+}
+
+@media (min-width: 768px) {
+  .code {
+    font-size: 200px;
+    letter-spacing: 12px;
+  }
+}
+
+/* Glitch pseudo layers */
+.code::before,
+.code::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.code::before {
+  color: var(--accent-cyan);
+  z-index: -1;
+  animation: glitch404A 3s ease-in-out infinite;
+}
+
+.code::after {
+  color: var(--bg-danger);
+  z-index: -2;
+  animation: glitch404B 3s ease-in-out infinite;
+}
+
+@keyframes glitch404A {
+  0%, 88%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 0;
+  }
+  89% {
+    clip-path: inset(20% 0 40% 0);
+    transform: translate(-4px, 2px);
+    opacity: 0.7;
+  }
+  91% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(3px, -1px);
+    opacity: 0;
+  }
+  93% {
+    clip-path: inset(10% 0 70% 0);
+    transform: translate(-2px, 3px);
+    opacity: 0.5;
+  }
+  95% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+@keyframes glitch404B {
+  0%, 86%, 100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 0;
+  }
+  87% {
+    clip-path: inset(50% 0 20% 0);
+    transform: translate(5px, -2px);
+    opacity: 0.6;
+  }
+  90% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(-3px, 1px);
+    opacity: 0;
+  }
+  92% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(4px, -3px);
+    opacity: 0.4;
+  }
+  94% {
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
+    opacity: 0;
+  }
+}
+
+/* ── Title ── */
+.title {
+  font-family: "Audiowide", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-heading);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  animation: fadeInUp 600ms ease-out 350ms both;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+}
+
+.accent {
+  color: var(--accent-cyan);
+}
+
+/* ── Terminal Output ── */
+.terminal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-default);
+  border-radius: 2px;
+  background: var(--bg-neutral-primary-soft);
+  box-shadow: var(--shadow-xs);
+  text-align: left;
+  width: 100%;
+  max-width: 500px;
+  clip-path: polygon(
+    12px 0%, 100% 0%, 100% calc(100% - 12px),
+    calc(100% - 12px) 100%, 0% 100%, 0% 12px
+  );
+  animation: fadeInUp 600ms ease-out 500ms both;
+}
+
+.termLine {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.prompt {
+  color: var(--accent-cyan);
+  font-family: "Audiowide", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+  line-height: 1.7;
+}
+
+.lineText {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+.highlight {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* ── CTA Button ── */
+.actions {
+  margin-top: 8px;
+  animation: fadeInUp 600ms ease-out 700ms both;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: "Audiowide", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-black);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  background: var(--bg-brand);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  clip-path: polygon(
+    8px 0%, 100% 0%, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 0% 100%, 0% 8px
+  );
+  box-shadow:
+    var(--shadow-xs),
+    inset rgba(84, 234, 253, 0.12) 0 1px 0px 0px,
+    rgba(84, 234, 253, 0.08) 0 0 14px -2px;
+  transition: all 150ms ease-out;
+  cursor: pointer;
+}
+
+.btnPrimary:hover {
+  background: var(--bg-brand-strong);
+  text-shadow: none;
+  box-shadow:
+    var(--shadow-md),
+    inset rgba(84, 234, 253, 0.25) 0 1px 0px 0px,
+    rgba(84, 234, 253, 0.2) 0 0 30px -2px;
+  transform: translateY(-1px);
+}
+
+/* ── Error Meta ── */
+.errorMeta {
+  font-family: "Audiowide", monospace;
+  font-size: 10px;
+  color: var(--text-body-subtle);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-top: 8px;
+  animation: fadeInUp 600ms ease-out 900ms both;
+}

@@ -1,0 +1,245 @@
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER SECTION — "The Clean Terminal" Cyberpunk Portfolio
+   ═══════════════════════════════════════════════════════════════════ */
+
+.footer {
+  position: relative;
+  background: var(--bg-neutral-primary);
+  margin-top: 64px;
+  z-index: 1;
+}
+
+/* ── Top Border (Scanline / Data flow effect) ── */
+.footerTopBorder {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--bg-neutral-primary) 0%,
+    var(--border-default-strong) 20%,
+    var(--accent-cyan) 50%,
+    var(--border-default-strong) 80%,
+    var(--bg-neutral-primary) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.footerTopBorder::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 0 15px 2px var(--accent-cyan);
+  animation: borderTrace 4s linear infinite;
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 64px 24px 32px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN GRID
+   ═══════════════════════════════════════════════════════════════════ */
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── Brand Section ── */
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logoOrb {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 10px rgba(84, 234, 253, 0.2);
+}
+
+.logoOrb::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px dashed var(--accent-cyan);
+  opacity: 0.5;
+  animation: rotate 10s linear infinite;
+}
+
+.orbCore {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logoText {
+  font-family: "Audiowide", monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-heading);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(84, 234, 253, 0.3);
+}
+
+.brandDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-body-subtle);
+  max-width: 400px;
+}
+
+/* ── Navigation Sections ── */
+.navSection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.navTitle {
+  font-family: "Audiowide", monospace;
+  font-size: 14px;
+  color: var(--text-heading);
+  letter-spacing: 1px;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-default-strong);
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-body);
+  text-decoration: none;
+  transition: all 200ms ease-out;
+}
+
+.navPrefix {
+  color: var(--border-default-strong);
+  font-family: "Audiowide", monospace;
+  font-size: 10px;
+  transition: color 200ms ease-out;
+}
+
+.navLink:hover {
+  color: var(--accent-cyan);
+  transform: translateX(4px);
+}
+
+.navLink:hover .navPrefix {
+  color: var(--accent-cyan);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BOTTOM SECTION (Copyright & Status)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.footerBottom {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-default);
+  font-family: "Audiowide", monospace;
+  font-size: 11px;
+  color: var(--text-body-subtle);
+  letter-spacing: 1px;
+}
+
+@media (min-width: 768px) {
+  .footerBottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copySymbol {
+  font-family: sans-serif; /* standard copyright symbol font */
+  font-size: 14px;
+}
+
+.statusGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-success);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: var(--bg-success);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--bg-success);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.serverLoc {
+  opacity: 0.6;
+}

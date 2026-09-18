@@ -1,0 +1,59 @@
+name: 🚀 Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔑 Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.VPS_PORT }} -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: 🚀 Deploy to VPS
+        run: |
+          ssh -i ~/.ssh/deploy_key -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'DEPLOY_SCRIPT'
+            set -e
+
+            APP_DIR=~/apps/trxmod21x
+
+            echo "📁 Navigating to project directory..."
+            cd $APP_DIR
+
+            echo "📥 Pulling latest changes..."
+            git pull origin main
+
+            echo "📝 Writing environment file..."
+            cat > .env << 'ENV_EOF'
+            ${{ secrets.ENV_FILE }}
+          ENV_EOF
+
+            echo "📦 Installing dependencies..."
+            pnpm install --frozen-lockfile
+
+            echo "🔨 Building project..."
+            pnpm build
+
+            echo "♻️ Restarting PM2 process..."
+            pm2 restart trxmod21x || pm2 start ecosystem.config.cjs
+
+            echo "💾 Saving PM2 state..."
+            pm2 save
+
+            echo "✅ Deployment complete!"
+          DEPLOY_SCRIPT
+
+      - name: 🧹 Cleanup
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
