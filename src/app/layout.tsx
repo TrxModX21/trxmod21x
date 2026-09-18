@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://trxmod21x.my.id"),
   title: "TrxMod21X | Full-Stack Engineer & Digital Architect",
   description:
-    "Explore the portfolio of TrxMod21X, a Full-Stack Software Engineer specializing in modern web and mobile applications using React, Next.js, Laravel, and Flutter.",
+    "Portfolio of TrxMod21X, a Full-Stack Software Engineer specializing in modern web and mobile apps using React, Next.js, Laravel, and Flutter.",
   keywords: [
     "TrxMod21X",
     "Teuku Rizky",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.jpg", // Make sure you have this image in your public folder
+        url: "/og-banner.jpg", // Generates a 1200x630 banner
         width: 1200,
         height: 630,
         alt: "TrxMod21X Logo",
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "TrxMod21X | Full-Stack Engineer",
-    description: "Explore the portfolio of TrxMod21X, a Full-Stack Software Engineer.",
-    images: ["/logo.jpg"],
+    description: "Portfolio of TrxMod21X, a Full-Stack Software Engineer specializing in modern web and mobile apps.",
+    images: ["/og-banner.jpg"],
   },
   icons: {
     icon: "/logo.jpg",
