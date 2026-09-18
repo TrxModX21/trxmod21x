@@ -32,7 +32,8 @@ jobs:
             cd $APP_DIR
 
             echo "📥 Pulling latest changes..."
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
 
             echo "📝 Writing environment file..."
             cat > .env << 'ENV_EOF'
