@@ -6,6 +6,7 @@ import Background from "@/components/Background";
 import FoxCursor from "@/components/neonblade-ui/fox-cursor";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trxmod21x.my.id"),
   title: "TrxMod21X | Full-Stack Engineer & Digital Architect",
   description:
     "Explore the portfolio of TrxMod21X, a Full-Stack Software Engineer specializing in modern web and mobile applications using React, Next.js, Laravel, and Flutter.",
