@@ -24,6 +24,12 @@ jobs:
       - name: 🚀 Deploy to VPS
         run: |
           ssh -i ~/.ssh/deploy_key -p ${{ secrets.VPS_PORT }} ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'DEPLOY_SCRIPT'
+          # Memuat Environment Variables untuk sesi Non-Interactive SSH
+            export PNPM_HOME=~/.local/share/pnpm
+            export PATH="$PNPM_HOME:$PATH"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            
             set -e
 
             APP_DIR=~/apps/trxmod21x
