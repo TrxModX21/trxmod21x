@@ -30,22 +30,22 @@ export default function Footer() {
             <h4 className={styles.navTitle}>// SYSTEM_NAV</h4>
             <ul className={styles.navList}>
               <li>
-                <Link href="#home" className={styles.navLink}>
+                <Link href="/" className={styles.navLink}>
                   <span className={styles.navPrefix}>&#62;</span> Home
                 </Link>
               </li>
               <li>
-                <Link href="#about" className={styles.navLink}>
+                <Link href="/#about" className={styles.navLink}>
                   <span className={styles.navPrefix}>&#62;</span> About
                 </Link>
               </li>
               <li>
-                <Link href="#projects" className={styles.navLink}>
+                <Link href="/#projects" className={styles.navLink}>
                   <span className={styles.navPrefix}>&#62;</span> Projects
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className={styles.navLink}>
+                <Link href="/#contact" className={styles.navLink}>
                   <span className={styles.navPrefix}>&#62;</span> Contact
                 </Link>
               </li>
@@ -75,17 +75,7 @@ export default function Footer() {
                 >
                   <span className={styles.navPrefix}>&#62;</span> LinkedIn
                 </a>
-              </li>
-              <li>
-                <a
-                  href="https://twitter.com/trxmod21x"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.navLink}
-                >
-                  <span className={styles.navPrefix}>&#62;</span> X (Twitter)
-                </a>
-              </li>
+              </li>              
             </ul>
           </div>
         </div>

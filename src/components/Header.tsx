@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./Header.module.css";
+import Link from "next/link";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
@@ -36,7 +37,7 @@ export default function Header() {
     >
       <div className={styles.headerInner}>
         {/* ── Logo ── */}
-        <a href="#home" className={styles.logoLink} aria-label="TrxMod21X — Home">
+        <Link href="/" className={styles.logoLink} aria-label="TrxMod21X — Home">
           <div className={styles.logoWrapper}>
             <Image
               src="/logo.jpg"
@@ -51,17 +52,17 @@ export default function Header() {
           <span className={styles.logoText}>
             Trx<span className={styles.logoAccent}>Mod21X</span>
           </span>
-        </a>
+        </Link>
 
         {/* ── Desktop Navigation ── */}
         <nav className={styles.desktopNav} aria-label="Main navigation">
           <ul className={styles.navList}>
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className={styles.navLink}>
+                <Link href={link.href} className={styles.navLink}>
                   <span className={styles.navPrefix}>//</span>
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
