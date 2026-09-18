@@ -2,10 +2,10 @@ module.exports = {
   apps: [
     {
       name: "trxmod21x",
-      script: "node_modules/.bin/next",
+      script: "node_modules/next/dist/bin/next",
       args: "start",
       cwd: "/home/trxmod21x/apps/trxmod21x",
-      instances: 1,
+      exec_mode: "fork",
       autorestart: true,
       watch: false,
       max_memory_restart: "512M",
